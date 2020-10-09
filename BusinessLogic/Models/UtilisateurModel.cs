@@ -19,7 +19,13 @@ namespace BusinessLogic.Models
 
         public string Email { get { return _utilisateur.Email; } set { _utilisateur.Email = value; } }
 
-        public int? DepartementId { get { return _utilisateur.DepartementId; } set { _utilisateur.DepartementId = value; } }
+        public int? DepartementId { 
+            get { 
+                return _utilisateur.DepartementId;
+            } 
+            set { 
+                _utilisateur.DepartementId = value;
+            } }
 
         public int? ResponsableId { get { return _utilisateur.ResponsableId; } set { _utilisateur.ResponsableId = value; } }
 
@@ -27,23 +33,26 @@ namespace BusinessLogic.Models
 
         public List<RoleModel> ListeRoles { get { return listesroles; } set { listesroles = value; } }
 
-        public DepartementModel Departement { get { return departement; } set { departement = value; } }
-
         public List<RoleModel> listesroles;
+        public DepartementModel Departement { get { return departementfield; } set { departementfield = value;DepartementId = value.Id;  } }
 
-        public DepartementModel departement;
+        public DepartementModel departementfield;
+
+
 
         public UtilisateurModel()
         {
             _utilisateur = new Utilisateur();
+            /*met la propriété ce qui permet de lié departementId à departement*/
+            Departement = new DepartementModel();
+            listesroles = new List<RoleModel>();
         }
 
         public UtilisateurModel(Utilisateur u)
         {
             _utilisateur = u;
-            listesroles = RoleUtilisateurModel.GetRolesbyuser(u.Id);
-            int v = (int)u.DepartementId;
-            departement = DepartementModel.GetDepartement(v);
+            ListeRoles = RoleUtilisateurModel.GetRolesbyuser(u.Id);
+            Departement = DepartementModel.GetDepartement(u.DepartementId);//always put properties here
         }
 
         public static List<UtilisateurModel> GetAll()
@@ -64,25 +73,37 @@ namespace BusinessLogic.Models
             {
                 if (_utilisateur.Id>0)
                 {
-                    foreach(var roleutil in RoleUtilisateurModel.GetRoleutilisateur(_utilisateur.Id))
+                    var arr = RoleUtilisateurModel.GetRoleutilisateur(_utilisateur.Id);/*.OrderBy(o=>o.)*/;
+                    foreach (var roleutil in arr)
                     {
-                        roleutil.Delete();
+                        if(!listesroles.Any(o=>o.Id==roleutil.RoleId))//si le role n'existe pas dans la liste réele l'enlever
+                        {
+                            roleutil.Delete();
+                        }
                     }
-                    foreach(var role in listesroles)
+                    foreach (var role in listesroles)
                     {
-                        var obj=Entry.Get<Entities, RoleUtilisateur>(o=>o.RoleId==role.Id);
-                        Entry.delete<Entities,RoleUtilisateur>(ref obj);
+                        if(!arr.Any(o=>o.RoleId==role.Id))//si le role existe dans la base de donnée le laisser pour eviter d'ajouter un duplicata
+                        {
+                            var obj = new RoleUtilisateurModel(role.Id, _utilisateur.Id);
+                            obj.Save();
+                        }
                     }
                     return Entry.update<Entities, Utilisateur>(ref _utilisateur);
                 }
                 else
                 {
-                    foreach (var role in listesroles)
+
+                    var ret=Entry.add<Entities, Utilisateur>(ref _utilisateur);
+                    if (listesroles!=null)
                     {
-                        var obj = Entry.Get<Entities, RoleUtilisateur>(o => o.RoleId == role.Id);
-                        Entry.delete<Entities, RoleUtilisateur>(ref obj);
+                        foreach (var role in listesroles)
+                        {
+                            var obj = new RoleUtilisateurModel(role.Id, _utilisateur.Id);
+                            obj.Save();
+                        }
                     }
-                    return Entry.add<Entities, Utilisateur>(ref _utilisateur);
+                    return ret;
                 }
             }
             catch (Exception)

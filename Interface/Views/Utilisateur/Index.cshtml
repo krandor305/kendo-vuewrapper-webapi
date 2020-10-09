@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "utilisateur";
+    TempData["Date"] = "https://unpkg.com/@progress/kendo-dateinputs-vue-wrapper/dist/cdn/kendo-dateinputs-vue-wrapper.min.js";
+    TempData["Input"] = "https://unpkg.com/@progress/kendo-dropdowns-vue-wrapper@2020.3.928/dist/cdn/kendo-dropdowns-vue-wrapper.js";
+    TempData["Datasource"] = "https://unpkg.com/@progress/kendo-datasource-vue-wrapper@2020.3.928/dist/cdn/kendo-datasource-vue-wrapper.js";
+    TempData["Button"] = "https://unpkg.com/@progress/kendo-buttons-vue-wrapper@2020.3.928/dist/cdn/kendo-buttons-vue-wrapper.js";
+}
+
+@section css{
+
+}
+
+
+<div id="vueapp" class="vue-app">
+    <form method="post" class="col-3"  v-on:submit="send">
+        <kendo-datasource ref="datasource"
+                          :transport-read-url="'https://localhost:44351/Home/Getdepartements'">
+        </kendo-datasource>
+        <kendo-dropdownlist :data-source-ref="'datasource'"
+                            :data-text-field="'nom'"
+                            :data-value-field="'id'" id="dId" v-model="departementId">
+        </kendo-dropdownlist>
+        <kendo-datepicker id="kc" v-model="entryDate" :format="'dd/MM/yyyy'" selection></kendo-datepicker>
+        <kendo-button class="k-primary">Envoyer</kendo-button>
+    </form>
+    <p>departement:{{departementId}}</p>
+    <p>date:{{entryDate}}</p>
+</div>
+
+@section scripts{
+    <script src=@TempData["Date"]></script>
+    <script src=@TempData["Input"]></script>
+    <script src=@TempData["Datasource"]></script>
+    <script src=@TempData["Button"]></script>
+    <script>
+        new Vue({
+            el: '#vueapp',
+            data() {
+                return {
+                    departementId: '1',
+                    entryDate: new Date(Date.now()),
+                }
+            },
+            methods: {
+                send: function () {
+                    console.log(this.departementId);
+                    console.log(kendo.toString(kendo.parseDate(this.entryDate), 'dd/MM/yyyy'));
+
+                    axios({
+                        method: 'post',
+                        url: '/Home/Createutilisateur',
+                        params: {
+                            id: '0',
+                            departementId: this.departementId,
+                            entryDate: kendo.toString(kendo.parseDate(this.entryDate), 'MM/dd/yyyy')
+                        },
+                        //headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(function (response) {
+                            //handle success
+                            console.log(response);
+                        })
+                    .catch(function (response) {
+                            //handle error
+                            console.log(response);
+                        });
+
+                    /*$.ajax({
+                        url: 'https://localhost:44351/Home/Createutilisateur', // La ressource ciblée
+                        type: 'POST', // Le type de la requête HTTP.
+                        data: {
+                            "id": '0',
+                            "departementId": this.departementId,
+                            "entryDate": kendo.toString(kendo.parseDate(this.entryDate), 'dd/MM/yyyy')
+                        }
+                    });*/
+                },
+            }
+        });
+    </script>
+}
+
+

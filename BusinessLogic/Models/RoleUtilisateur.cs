@@ -27,6 +27,13 @@ namespace BusinessLogic.Models
             _roleutilisateur = r;
         }
 
+        public RoleUtilisateurModel(int roleid,int userid)
+        {
+            _roleutilisateur = new RoleUtilisateur();
+            _roleutilisateur.RoleId = roleid;
+            _roleutilisateur.UtilisateurId = userid;
+        }
+
         public static List<RoleUtilisateurModel>GetRoleutilisateur()
         {
             var roles = Entry.GetList<Entities, RoleUtilisateur>().Select(o=>new RoleUtilisateurModel(o)).ToList();
@@ -47,7 +54,26 @@ namespace BusinessLogic.Models
             //à ajouter au get des user
         }
 
-    public int Delete()
+        public int Save()
+        {
+            try
+            {
+                if (_roleutilisateur.Id > 0)
+                {
+                    return Entry.update<Entities, RoleUtilisateur>(ref _roleutilisateur);
+                }
+                else
+                {
+                    return Entry.add<Entities, RoleUtilisateur>(ref _roleutilisateur);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public int Delete()
         {
             try
             {

@@ -24,9 +24,45 @@ namespace Interface.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Getutilisateurs()
         {
             return Json(UtilisateurModel.GetAll());
+        }
+
+        [HttpGet]
+        public IActionResult Getroles()
+        {
+            return Json(RoleModel.GetRoles());
+        }
+
+        [HttpGet]
+        public IActionResult Getdepartements()
+        {
+            return Json(DepartementModel.GetDepartements());
+        }
+
+        [HttpPost]
+        public IActionResult Createutilisateur(UtilisateurModel u,int id)
+        {
+            //u.DepartementId = departement;
+            u.Save();
+            u.Departement = DepartementModel.GetDepartement(u.DepartementId);
+            return Json(u);
+        }
+
+        [HttpPost]
+        public IActionResult Updateutilisateur(UtilisateurModel u)
+        {
+            u.Save();
+            return Json(u);
+        }
+
+        [HttpPost]
+        public IActionResult Deleteutilisateur(UtilisateurModel u)
+        {
+            u.Delete();
+            return Json(u);
         }
 
         public IActionResult Privacy()

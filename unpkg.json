@@ -1,0 +1,101 @@
+{
+  "vue": {
+    "version": "2.6.12",
+    "files": [
+      {
+        "file": "/dist/vue.common.dev.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.common.dev.js",
+        "local": "wwwroot/lib/vue/vue.common.dev.js",
+        "integrity": "sha384-vwSjWnUR1CNnx/2Xs/9Xi0hEoY0R3SaYGLhgQRzHtANzcXqWvbeLSWYm9gnrI/lk"
+      },
+      {
+        "file": "/dist/vue.common.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.common.js",
+        "local": "wwwroot/lib/vue/vue.common.js",
+        "integrity": "sha384-NYm2gJbr/2HOYSfMirdo5YPtkjjLfOC3QPCjSHVUDlT3nZniBrvbMnNkYZiIR+Rv"
+      },
+      {
+        "file": "/dist/vue.common.prod.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.common.prod.js",
+        "local": "wwwroot/lib/vue/vue.common.prod.js",
+        "integrity": "sha384-OPxLakgO2Kmf1j/8Kwr/3LVm8pa5nc/XrxbyNPzfO5glXrFuseBO2LVqYT/aY4DR"
+      },
+      {
+        "file": "/dist/vue.esm.browser.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.esm.browser.js",
+        "local": "wwwroot/lib/vue/vue.esm.browser.js",
+        "integrity": "sha384-m42/4NG+4xYSHCZTJbwD1dTxeZ7j77nmUqM/QPxGMgYxdzHkqQ/J/9qz8dqZ1i46"
+      },
+      {
+        "file": "/dist/vue.esm.browser.min.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.esm.browser.min.js",
+        "local": "wwwroot/lib/vue/vue.esm.browser.min.js",
+        "integrity": "sha384-ek4/oSEJCjoPx5IzvpQJr+oRghRVo0/TOZQ2Sozs87xdjFtyK+us1aQOfA/SFz7g"
+      },
+      {
+        "file": "/dist/vue.esm.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.esm.js",
+        "local": "wwwroot/lib/vue/vue.esm.js",
+        "integrity": "sha384-AIvErL2PssY3wPjXMLok76sSLbUgBfDpw8cKf6NJzrjKlsXMzV9qVcgJnl0qwqu/"
+      },
+      {
+        "file": "/dist/vue.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.js",
+        "local": "wwwroot/lib/vue/vue.js",
+        "integrity": "sha384-ma9ivURrHX5VOB4tNq+UiGNkJoANH4EAJmhxd1mmDq0gKOv88wkKZOfRDOpXynwh"
+      },
+      {
+        "file": "/dist/vue.min.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.min.js",
+        "local": "wwwroot/lib/vue/vue.min.js",
+        "integrity": "sha384-cwVe6U8Tq7F/3JIj6xeDzOwuqeChcmRcdYqDGfoYmdAurw7L3f4dFHhEJKfxv96A"
+      },
+      {
+        "file": "/dist/vue.runtime.common.dev.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.runtime.common.dev.js",
+        "local": "wwwroot/lib/vue/vue.runtime.common.dev.js",
+        "integrity": "sha384-COITF4j098O1AMpvRJk5pAqobBEiPDDnOeQ/bey2eU28q9JkzQ4tuvyNgW65/NDj"
+      },
+      {
+        "file": "/dist/vue.runtime.common.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.runtime.common.js",
+        "local": "wwwroot/lib/vue/vue.runtime.common.js",
+        "integrity": "sha384-6o3X46AGXUixaYiO+D8RW3Y94zda/7C6/PqVzTvxxVORgZW7a20YNJnvc0mVm2UG"
+      },
+      {
+        "file": "/dist/vue.runtime.common.prod.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.runtime.common.prod.js",
+        "local": "wwwroot/lib/vue/vue.runtime.common.prod.js",
+        "integrity": "sha384-tzljUAvg6YhlyXr4rBMopSuSLDsfHueVR6N0pSXXwNxMFCSZoOgF+3nh4bT9mtMw"
+      },
+      {
+        "file": "/dist/vue.runtime.esm.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.runtime.esm.js",
+        "local": "wwwroot/lib/vue/vue.runtime.esm.js",
+        "integrity": "sha384-0nHGzapSlieKBGKb9Ds5wYrVEES2duziNEuhkdvoT6oHw84Crizfmr6u+nj3KsvG"
+      },
+      {
+        "file": "/dist/vue.runtime.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.runtime.js",
+        "local": "wwwroot/lib/vue/vue.runtime.js",
+        "integrity": "sha384-nXImBukJrJNJfvWPXisQdgUs9hfCH9fwdo6a9N/JSVYm42Hlu8MrkretgV0ZoFCO"
+      },
+      {
+        "file": "/dist/vue.runtime.min.js",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/vue.runtime.min.js",
+        "local": "wwwroot/lib/vue/vue.runtime.min.js",
+        "integrity": "sha384-kqLqhyX6mJUMabHYj+igelG9N3n2aECQWb6ActNmaz4qZMG4GNrmb+Fne/HP6Kz1"
+      },
+      {
+        "file": "/dist/README.md",
+        "cdn": "https://unpkg.com/vue@2.6.12/dist/README.md",
+        "local": "wwwroot/lib/vue/README.md",
+        "integrity": "sha384-TkOMgVS5tuqMC4mGvs8yPAtLuaR16JwL9APDzNJ10MoQ19yDQkX8OElDVWXEurVc"
+      }
+    ]
+  },
+  "@progress/kendo-dateinputs-vue-wrapper/dist/cdn/kendo-dateinputs-vue-wrapper.js": {
+    "version": "2020.3.928",
+    "files": []
+  }
+}

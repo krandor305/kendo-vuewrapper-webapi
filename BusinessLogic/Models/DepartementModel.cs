@@ -32,7 +32,7 @@ namespace BusinessLogic.Models
             return deps;
         }
 
-        public static DepartementModel GetDepartement(int id)
+        public static DepartementModel GetDepartement(int? id)
         {
             var deps = Entry.Get<Entities, Departement>(o=>o.Id==id);
             return new DepartementModel(deps);
