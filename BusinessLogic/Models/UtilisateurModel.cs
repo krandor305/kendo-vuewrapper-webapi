@@ -19,6 +19,8 @@ namespace BusinessLogic.Models
 
         public string Email { get { return _utilisateur.Email; } set { _utilisateur.Email = value; } }
 
+        public string Roles { get { return _utilisateur.Roles; } set { _utilisateur.Roles = value; } }
+
         public int? DepartementId { 
             get { 
                 return _utilisateur.DepartementId;

@@ -17,6 +17,7 @@ namespace DataAccess.Models
         public int? DepartementId { get; set; }
         public int? ResponsableId { get; set; }
         public DateTime EntryDate { get; set; }
+        public string Roles { get; set; }
 
         public virtual Utilisateur Responsable { get; set; }
         public virtual ICollection<Utilisateur> InverseResponsable { get; set; }
