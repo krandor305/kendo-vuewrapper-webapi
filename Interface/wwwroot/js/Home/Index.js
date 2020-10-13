@@ -107,7 +107,6 @@
             var bbsMultiSelect = container.find("[id=bindbystring]").data("kendoMultiSelect");
             if (bbsMultiSelect) {
                 bbsMultiSelect.value(promptarray(e.model.roles));//a chaque edit initialise les valeurs
-
             }
         }
 
@@ -137,7 +136,6 @@ function orgEditor2(container, options) {
             dataSource: getroles,
             dataTextField: "nom",
             dataValueField: "nom",
-            value: [promptarray(options.model.roles)],//promptarray(options.model.roles),
 
 
             change: function (e) {
